@@ -7,6 +7,7 @@ import { useNavigate } from 'react-router';
 
 const ProductContainer = ({url,elRef,img,rating, title,price,discountPrice }) => {
   const navigate = useNavigate()
+  console.log(img)
   const handleClick=(event)=>{
       if(url)navigate(url)
   }

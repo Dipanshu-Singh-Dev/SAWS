@@ -11,12 +11,14 @@
 .filters{
   background-color: whitesmoke;
   border-radius: 10px;
+  padding: 20px;
 }
-
+.filters *{
+  margin: auto 5px;
+}
 .filter_head{
   padding: 10px;
 }
-
 .filter_button{
   text-decoration: none;
   padding: 10px;
