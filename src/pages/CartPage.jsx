@@ -1,7 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import axios from "axios"
-// import styles from "./cartPage.module.css"
 import "../styles/CartPage.css"
 import CartProduct from '../components/CartProduct'
 import { AuthContext } from '../context/AuthContext'
