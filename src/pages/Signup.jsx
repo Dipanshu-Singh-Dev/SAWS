@@ -4,9 +4,9 @@ import axios from "axios"
 import "../styles/Signup.css"
 import { AuthContext } from '../context/AuthContext'
 
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-app.js";
-import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-analytics.js";
-import { getAuth, signInWithPopup, GoogleAuthProvider } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-auth.js";
+// import { initializeApp } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-app.js";
+// import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-analytics.js";
+// import { getAuth, signInWithPopup, GoogleAuthProvider } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-auth.js";
 
 const baseURL = `http://localhost:8080`
 const initialState = {
@@ -166,44 +166,44 @@ const Signup = () => {
   };
 
   // Initialize Firebase
-    const app = initializeApp(firebaseConfig);
-    const analytics = getAnalytics(app);
-    const provider = new GoogleAuthProvider();
-    const auth = getAuth();
+    // const app = initializeApp(firebaseConfig);
+    // const analytics = getAnalytics(app);
+    // const provider = new GoogleAuthProvider();
+    // const auth = getAuth();
 
     const GoogleSignin = () => {
-        signInWithPopup(auth, provider)
-            .then(async(result) => {
-                // This gives you a Google Access Token. You can use it to access the Google API.
-                const credential = GoogleAuthProvider.credentialFromResult(result);
-                const token = credential.accessToken;
-                // The signed-in user info.
-                const user = result.user;
-                console.log(user);
-                let res = await axios.get(`${baseURL}/users?email=${signInData.email}&password=${signInData.password}`);
-                let wish = await axios.get(`${baseURL}/wishlist`);
-                let cart = await axios.get(`${baseURL}/cart`);
-                setAuthState({...authState, 
-                            isAuth: true, 
-                            userId: res.data[0].id, 
-                            userName: res.data[0].firstName, 
-                            wishlist: wish.data, 
-                            cart: cart.data 
-                          });
-                openPopUpBar();
-                // IdP data available using getAdditionalUserInfo(result)
-                // ...
-            })
-            .catch((error) => {
-                // Handle Errors here.
-                const errorCode = error.code;
-                const errorMessage = error.message;
-                // The email of the user's account used.
-                const email = error.customData.email;
-                // The AuthCredential type that was used.
-                const credential = GoogleAuthProvider.credentialFromError(error);
-                // ...
-            });
+        // signInWithPopup(auth, provider)
+        //     .then(async(result) => {
+        //         // This gives you a Google Access Token. You can use it to access the Google API.
+        //         const credential = GoogleAuthProvider.credentialFromResult(result);
+        //         const token = credential.accessToken;
+        //         // The signed-in user info.
+        //         const user = result.user;
+        //         console.log(user);
+        //         let res = await axios.get(`${baseURL}/users?email=${signInData.email}&password=${signInData.password}`);
+        //         let wish = await axios.get(`${baseURL}/wishlist`);
+        //         let cart = await axios.get(`${baseURL}/cart`);
+        //         setAuthState({...authState, 
+        //                     isAuth: true, 
+        //                     userId: res.data[0].id, 
+        //                     userName: res.data[0].firstName, 
+        //                     wishlist: wish.data, 
+        //                     cart: cart.data 
+        //                   });
+        //         openPopUpBar();
+        //         // IdP data available using getAdditionalUserInfo(result)
+        //         // ...
+        //     })
+        //     .catch((error) => {
+        //         // Handle Errors here.
+        //         const errorCode = error.code;
+        //         const errorMessage = error.message;
+        //         // The email of the user's account used.
+        //         const email = error.customData.email;
+        //         // The AuthCredential type that was used.
+        //         const credential = GoogleAuthProvider.credentialFromError(error);
+        //         // ...
+        //     });
     }
 
   // Google Authentication Ends
