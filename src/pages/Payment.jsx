@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react'
 import axios from "axios";
-import "../styles/payment.css"
+import "../styles/Payment.css"
 import { AuthContext } from "../context/AuthContext"
 import DeliveryAddress from '../components/cart/DeliveryAddress';
 import AddAddress from '../components/cart/AddAddress';

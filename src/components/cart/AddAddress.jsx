@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useRef, useState } from 'react'
-import "../../styles/payment.css"
+import "../../styles/Payment.css"
 import axios from "axios"
 import { AuthContext } from '../../context/AuthContext'
 

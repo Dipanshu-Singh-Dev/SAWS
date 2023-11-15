@@ -1,5 +1,5 @@
 import React from 'react'
-import "../../styles/payment.css"
+import "../../styles/Payment.css"
 
 const DeliveryAddress = ({data}) => {
     const {doorNo, street, city, district, state, pincode} = data;
