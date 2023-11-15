@@ -4,6 +4,7 @@ import styles from "../styles/Navbar.module.css"
 import {homeSVG,wishlistSVG,cartSVG,loginSVG,loggedinSVG,productSVG} from "./SVGs";
 import Hamburger from './Hamburger';
 import { AuthContext } from '../context/AuthContext';
+import axios from 'axios';
 
 const tvs = [
   {

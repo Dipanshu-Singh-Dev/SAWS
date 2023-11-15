@@ -442,6 +442,7 @@ const laptops = [
   },
 ];
 const Home = () => {
+  
   return (
     <div className={styles.container}>
       <img className={styles.img} src="/banner.jpg" alt="banner" />

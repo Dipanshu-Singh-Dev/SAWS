@@ -1,3 +1,4 @@
+import axios from 'axios';
 import './App.css';
 import AllRoutes from './components/AllRoutes';
 import Navbar from './components/Navbar';
