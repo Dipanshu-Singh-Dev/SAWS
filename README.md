@@ -1,4 +1,4 @@
-# SAW - Your Ultimate Tech Haven
+# SAWS - Your Ultimate Tech Haven
 
 ## Table of Contents
 
@@ -10,9 +10,9 @@
 
 ## Description
 
-SAW Electronics is your go-to online store for all your electronic needs. We offer a vast selection of the latest gadgets, devices, and accessories, providing tech enthusiasts with a paradise of choices. Our platform is designed with user convenience in mind, ensuring a seamless shopping experience for customers looking to upgrade their tech game. Built using cutting-edge technologies such as HTML, CSS, and JavaScript, SAW Electronics is your ultimate destination for high-quality electronics.
+SAWS Electronics is your go-to online store for all your electronic needs. We offer a vast selection of the latest gadgets, devices, and accessories, providing tech enthusiasts with a paradise of choices. Our platform is designed with user convenience in mind, ensuring a seamless shopping experience for customers looking to upgrade their tech game. Built using cutting-edge technologies such as HTML, CSS, and JavaScript, SAWS Electronics is your ultimate destination for high-quality electronics.
 
-## [Demo](https://saws.netlify.app)
+## [Demo](https://SAWS.netlify.app)
 
 ## Features
 
@@ -24,6 +24,6 @@ SAW Electronics is your go-to online store for all your electronic needs. We off
 - **Responsive Design:** Enjoy a seamless shopping experience on both desktop and mobile devices with our responsive design.
 
 ## Screenshots
- - ![PC](SAW_home_pc.png)
- - ![Mobile](SAW_home_mobile.png)
- - ![Tablet](SAW_home_tab.png)
+ - ![PC](SAWS_home_pc.png)
+ - ![Mobile](SAWS_home_mobile.png)
+ - ![Tablet](SAWS_home_tab.png)
