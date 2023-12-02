@@ -23,6 +23,13 @@
     width: 400px;
     transition: color .3s ease-in-out;
 }
+.searchContainer p {
+    color: black;
+    font-family: 'Poppins',sans-serif;
+    font-size: 16px;
+    font-weight: 300;
+    cursor: pointer;
+}
 .searchContainer p:hover{
     color:darkgray;
     cursor: pointer;
@@ -103,6 +110,10 @@ aside a:hover{
     }
     .h4 {
        font-size: 15px;
+
+    }
+    .container p{
+        font-family: 'Poppins', sans-serif;
     }
 
 }

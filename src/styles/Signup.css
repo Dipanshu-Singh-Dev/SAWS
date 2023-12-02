@@ -7,18 +7,15 @@
 :root{
     --bg-color: conic-gradient(#b0b6fb, #ddccf8, #f5c9d9, #cebbfa, #a7aef9);
     --primary-color: #573b8a;
-    /* --bg-color: #fcf7ed;
-    --primary-color: #37919d; */
+    --primary-color: #508ffb;
     --light-gray: #f7f7f7;
-    /* --btn-hover: rgb(144, 180, 144); */
-    --btn-hover: #6d44b8;
+    --btn-hover: royalblue;
 }
 
 /* Sign-up Form */
 
 #form{
-    background: var(--bg-color);
-    min-height: 100vh;
+    height: fit-content;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -46,7 +43,8 @@
 }
 .signup > label,
 .login > label{
-    color: #fff;
+    color: var(--primary-color);
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     font-size: 2.3rem;
     font-weight: bold;
     margin-bottom: 30px;
@@ -59,11 +57,11 @@
 .login > #passwordField{
     width: 70%;
     height: 8%;
+    border: 1.5px solid lightgray;
     background-color: #fff;
-    border: none;
     outline: none;
     margin-bottom: 10px;
-    padding: 20px 10px;
+    padding: 20px 25px;
     border-radius: 100px;
 }
 .signup > div,
@@ -100,10 +98,6 @@
 .login > button:active{
     transform: scale(0.97);
 }
-
-
-
-/* Login Form */
 
 .login{
     height: 550px;
