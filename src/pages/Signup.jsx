@@ -4,10 +4,6 @@ import axios from "axios"
 import "../styles/Signup.css"
 import { AuthContext } from '../context/AuthContext'
 
-// import { initializeApp } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-app.js";
-// import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-analytics.js";
-// import { getAuth, signInWithPopup, GoogleAuthProvider } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-auth.js";
-
 const baseURL = `http://localhost:8080`
 const initialState = {
   firstName: "",
@@ -39,7 +35,6 @@ const Signup = () => {
 
   const handleSignUpFormSubmit = (e) => {
     e.preventDefault();
-    
     setSignUpMSG("");
     CreateUser();
     setUserData(initialState);
@@ -48,40 +43,7 @@ const Signup = () => {
   const CreateUser = async() => {
     let {confirmPassword: temp, ...obj} = userData;
     obj.userName = `${obj.firstName} ${obj.lastName}`
-    // console.log(obj);
-
-    if(userData.firstName != "" && userData.lastName != "" && userData.email != "" && userData.mobile != "" && userData.password != "" && userData.confirmPassword != ""){
-      if(obj.password.length >= 8){
-        if(userData.password === userData.confirmPassword){
-          let res = await axios.get(`${baseURL}/users?email=${obj.email}`);
-          console.log(res.data);
-
-          if(res.data.length > 0){
-            setSignUpMSG("User Already Exists. Please Login.");
-            document.getElementById("userCheck").style.color = "green"
-          }
-          else{
-            let data = await axios.post(`${baseURL}/users`, obj);
-            console.log(data.data);
-
-            setSignUpMSG("Account created successfully. Login to continue.");
-            document.getElementById("userCheck").style.color = "green"
-          }
-        }
-        else{
-          setSignUpMSG("Password & Confirm Password does not match.");
-          document.getElementById("userCheck").style.color = "red"
-        }
-      }
-      else{
-        setSignUpMSG("Password must be atleast 8 characters long.");
-        document.getElementById("userCheck").style.color = "red"
-      }
-    }
-    else{
-        setSignUpMSG("Please fill all the fields.");
-        document.getElementById("userCheck").style.color = "red"
-    }
+    
   }
 
   const handleSignInChange = (e) => {
@@ -119,9 +81,6 @@ const Signup = () => {
     }
   }
   
-  // Pop-Up Box Starts
-
-  let body1 = document.getElementById("popup");
       
   // let closeBtn = document.getElementById("closeBtn");
   // closeBtn.addEventListener("click", closePopUpBar);
@@ -155,15 +114,15 @@ const Signup = () => {
 
   // Google Authentication Starts
 
-  const firebaseConfig = {
-    apiKey: "AIzaSyCSu7rmm1BTqnXGZlq1z4WGkURh-tCBZZ8",
-    authDomain: "telemedicine-86590.firebaseapp.com",
-    projectId: "telemedicine-86590",
-    storageBucket: "telemedicine-86590.appspot.com",
-    messagingSenderId: "340614239963",
-    appId: "1:340614239963:web:ebc488e173e5b306a6defe",
-    measurementId: "G-DJQ3MZTQV9"
-  };
+  // const firebaseConfig = {
+  //   apiKey: "AIzaSyCSu7rmm1BTqnXGZlq1z4WGkURh-tCBZZ8",
+  //   authDomain: "telemedicine-86590.firebaseapp.com",
+  //   projectId: "telemedicine-86590",
+  //   storageBucket: "telemedicine-86590.appspot.com",
+  //   messagingSenderId: "340614239963",
+  //   appId: "1:340614239963:web:ebc488e173e5b306a6defe",
+  //   measurementId: "G-DJQ3MZTQV9"
+  // };
 
   // Initialize Firebase
     // const app = initializeApp(firebaseConfig);
@@ -215,37 +174,27 @@ const Signup = () => {
       <div className="container" id="mainContent">
             <input type="checkbox" id="hidden-btn" />
             <form onSubmit={handleSignUpFormSubmit} className="signup">
-                <label for="">Sign up</label>
-                <input type="text" placeholder="First Name" value={userData.firstName} name="firstName" onChange={handleChange} id="SignupFirstName" />
-                <input type="text" placeholder="Last Name" value={userData.lastName} name="lastName" onChange={handleChange} id="SignupLastName" />
-                <input type="text" placeholder="Mobile No" value={userData.mobile} name="mobile" onChange={handleChange} id="SignupMobile" />
-                <input type="email" placeholder="Email" value={userData.email} name="email" onChange={handleChange} id="SignupEmail" />
-                <div id="passwordField">
-                    <input type="password" placeholder="Password" value={userData.password} name="password" onChange={handleChange} id="SignupPassword" />
-                    <i className="fa-solid fa-eye-slash" id="SignupeyeIcon"></i>
-                </div>
-                <div id="passwordField">
-                    <input type="password" placeholder="Confirm Password" value={userData.confirmPassword} name="confirmPassword" onChange={handleChange} id="SignupConfirmPassword" />
-                    <i className="fa-solid fa-eye-slash" id="SignupConfirmeyeIcon"></i>
-                </div>
+                <label htmlFor="">Sign up</label>
+                <input type="text" placeholder="Email" value={userData.firstName} name="email" onChange={handleChange} id="SignupEmail" />
+                <input type="password" placeholder="Password" value={userData.password} name="password" onChange={handleChange} id="SignupPassword" />
+                <input type="password" placeholder="Confirm Password" value={userData.confirmPassword} name="confirmPassword" onChange={handleChange} id="SignupConfirmPassword" />
                 <button type='submit' id="create-account-button">Sign up</button><br />
                 <div id="userCheck" style={{marginTop: "-10px", fontWeight: "500"}}>{signUpMSG}</div>
             </form>
     
             <form onSubmit={handleSigInSubmit} className="login">
-                <label for="hidden-btn">Sign in</label>
+                <label htmlFor="hidden-btn">Sign in</label>
                 <input type="email" placeholder="Email"  value={signInData.email} name="email" onChange={handleSignInChange} id="SigninEmail" />
-                <div id="passwordField">
                     <input type="password" placeholder="Password" value={signInData.password} name="password" onChange={handleSignInChange} id="SigninPassword" />
-                    <i className="fa-solid fa-eye-slash" id="SignineyeIcon"></i>
-                </div>
+                   
                 <button id="signin-button">Login</button><br />
                 <div id="info">{signInMSG}</div>
-                <div style={{background: "transparent"}}>
-                    <a href="">Forgot your password</a>&nbsp;&nbsp;&nbsp;&nbsp;
+                <div style={{background: "transparent",display:"flex",width:"100%",flexDirection:"column"}}>
+                    <a href="">Forgot your password</a>
+                    <br/>
                     <a href="">Create New Account</a>
                 </div><br />
-                <button type="button" onClick={GoogleSignin} id="google-signin">Sign in with Google</button>
+                {/* <button type="button" onClick={GoogleSignin} id="google-signin">Sign in with Google</button> */}
             </form>
             <div id="popup-container">
                 <div className={openPopUp ? "popup open-popup"  : "popup"} id="popup">
