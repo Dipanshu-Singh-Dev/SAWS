@@ -47,17 +47,26 @@ const Products = () => {
   }, [page, category, brand, ratings, sort,order])
   return (
     <div className="products_container">
-      <Filter
-        setCategory={setCategory}
-        setBrand={setBrand}
-        setRatings={setRatings}
-      />
-      <div className="products_body">
+      <div className='sortNFilter'>
+        <Filter
+          setCategory={setCategory}
+          setBrand={setBrand}
+          setRatings={setRatings}
+        />
         <Sort handleSortChange={handleSortChange} />
+      </div>
+      <div className="products_body">
         <div className="products_data">
           {data?.map(
             (
-              { url, image, rating, name: title, MRP: price, price:discountPrice },
+              {
+                url,
+                image,
+                rating,
+                name: title,
+                MRP: price,
+                price: discountPrice,
+              },
               i
             ) => {
               return (
