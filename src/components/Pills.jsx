@@ -5,7 +5,7 @@ import styles from "../styles/Pills.module.css"
 const Pills = ({setState}) => {
   return (
     <div className={styles.container}>
-      <img src="Pills.png" alt="pills" />
+      <img src="pills.png" alt="pills" />
       <button
         onClick={() => setState((prev) => prev + 2)}
         id={styles.redPill}
