@@ -6,8 +6,7 @@ import ProductDetails from '../pages/ProductDetails'
 import CartPage from '../pages/CartPage'
 import Payment from '../pages/Payment'
 import PaymentSuccessful from '../pages/PaymentSuccessful'
-import Login from '../pages/Login'
-import Signup from '../pages/Signup'
+import Auth from '../pages/Auth'
 import WishList from '../pages/WishList'
 import PrivateRoute from './PrivateRoute'
 
@@ -20,8 +19,7 @@ const AllRoutes = () => {
         <Route path="/cart" element={ <PrivateRoute><CartPage /></PrivateRoute> }></Route>
         <Route path="/payments" element={ <PrivateRoute><Payment /></PrivateRoute> }></Route>
         <Route path="/paymentSuccessful" element={ <PaymentSuccessful /> }></Route>
-        <Route path="/login" element={ <Login /> }></Route>
-        <Route path="/signup" element={ <Signup /> }></Route>
+        <Route path="/auth" element={ <Auth /> }></Route>
         <Route path="/wishlist" element={ <PrivateRoute><WishList /></PrivateRoute> }></Route>
     </Routes>
   )

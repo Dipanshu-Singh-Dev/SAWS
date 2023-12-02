@@ -1,0 +1,42 @@
+#container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around; 
+    align-items: center;
+    height: 85vh; 
+    & form {
+        width: 30%;
+        border: 1px solid lightgray;
+        border-radius: 2px;
+        padding: 20px 50px;
+        height: 75%;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        justify-content: center;
+        & input {
+            outline: none;
+            border: 2px solid lightgray;
+            padding: 15px 20px;
+            border-radius: 2px;
+            :focus {
+                outline: none;
+            }
+        }
+        & button {
+            font-family: 'Poppins',sans-serif;
+            font-size: 24px;
+            font-weight: 300;
+            cursor: pointer;
+            background-color: #508ffb;
+            color: white;
+            border-radius: 2px;
+            border: none;
+            padding: 15px 20px;
+            transition: all .25s ease-in-out;
+            & :hover{
+                background-color: royalblue;
+            }
+        }
+    }
+}
