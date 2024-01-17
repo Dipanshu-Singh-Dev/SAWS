@@ -5,10 +5,10 @@
 }
 .products_container select{
   padding: 10px;
-    border: none;
-    outline: none;
-    background-color: whitesmoke;
-    border-radius: 50px;
+  border: none;
+  outline: none;
+  background-color: whitesmoke;
+  border-radius: 50px;
 
 }
 .products_head{

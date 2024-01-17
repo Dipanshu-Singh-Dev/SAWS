@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from 'react'
+import { useEffect, useState, useRef } from 'react'
 import { useParams, Link } from "react-router-dom"
 import axios from "axios";
 import "../styles/ProductDetails.css"
@@ -6,11 +6,10 @@ import BarChart from '../components/functionalComponent/BarChart';
 import CircularProgressBar from '../components/functionalComponent/CircularProgressBar';
 import ProgressBar from '../components/functionalComponent/ProgressBar/ProgressBar';
 import ProgressBarOne from '../components/functionalComponent/ProgressBar/ProgressBarOne';
-
-const baseURL = `http://localhost:8080`
+const baseURL = "https://saws-backend.onrender.com/products";
 
 const ProductDetails = () => {
-  const { productId } = useParams();
+  const {productId : id}= useParams();
   const [data, setData] = useState();
   const [openAvailableOffers, setOpenAvailableOffers] = useState(false);
   const [readMore, setReadMore] = useState(false);
@@ -24,20 +23,21 @@ const ProductDetails = () => {
     { rating: 1, number: 15}
   ]
 
-  const fetchProductData = async () => {
-    try {
-      let res = await axios.get(`${baseURL}/products/${productId}`);
-      console.log(res.data);
-      setData(res.data);
-    } catch (error) {
-      console.log("Error fetching Product Data", error)
-    }
-  }
 
   useEffect(() => {
-    fetchProductData();
+    (async () => {
+      try {
+        const url = `${baseURL}/${id}`;
+        console.log(url)
+        let res = await axios.get(url);
+        console.log(res.data);
+        setData(res.data);
+      } catch (error) {
+        console.log("Error fetching Product Data", error);
+      }
+    })()
   }, [])
-  console.log(productId);
+  // return <></>
   return (
     <div className='productDetails_container'>
       <div className='productDetails_product'>
@@ -46,8 +46,8 @@ const ProductDetails = () => {
             <img src={data?.image} alt="" />
           </div>
           <div className='productDetails_imageButtons'>
-            <button><i class="fa-solid fa-cart-shopping" style={{color: "#dddfe4"}}></i>&nbsp;&nbsp;Add To Cart</button>
-            <button><i class="fa-solid fa-bolt-lightning" style={{color: "#dddfe4"}}></i>&nbsp;&nbsp;Buy Now</button>
+            <button><i className="fa-solid fa-cart-shopping" style={{color: "#dddfe4"}}></i>&nbsp;&nbsp;Add To Cart</button>
+            <button><i className="fa-solid fa-bolt-lightning" style={{color: "#dddfe4"}}></i>&nbsp;&nbsp;Buy Now</button>
           </div>
         </div>
         <div className='productDetails_detailsContainer'>
@@ -56,15 +56,15 @@ const ProductDetails = () => {
               <ol className="breadcrumb">
                 <li className="breadcrumb-item"><Link to="/">Home</Link></li>
                 <li className="breadcrumb-item"><Link to="/products">Products</Link></li>
-                <li className="breadcrumb-item active" aria-current="page">{data?.title.slice(0, 50)}</li>
+                <li className="breadcrumb-item active" aria-current="page">{data?.name.slice(0, 50)}</li>
               </ol>
             </nav>
           </div>
           <div className='productDetails_heading'>
-            <h3>{data?.title.slice(0, 30)}</h3>
+            <h3>{data?.name.slice(0, 30)}</h3>
           </div>
           <div className='productDetails_ratings'>
-            <p className='productDetails_ratings_value'>{data?.rating}<i class="fa-solid fa-star" style={{ color: "white", fontSize: "0.75rem" }}></i></p>
+            <p className='productDetails_ratings_value'>{data?.rating}<i className="fa-solid fa-star" style={{ color: "white", fontSize: "0.75rem" }}></i></p>
             <span style={{ opacity: "0.5" }}>383 Ratings & 21 Reviews</span>
           </div>
           <div className='productDetails_price'>
@@ -137,7 +137,7 @@ const ProductDetails = () => {
             <div style={{width: "fit-content"}}>
               <div className='productDetails_delivery_pincode'>
                 <div className='productDetails_delivery_input'>
-                  <i class="fa-solid fa-location-dot" style={{color: "#155ad1"}}></i>
+                  <i className="fa-solid fa-location-dot" style={{color: "#155ad1"}}></i>
                   <input ref={pinCodeRef} type="text" placeholder='Enter Delivery Pin-Code' min="0" max="999999" step='1' pattern="[0-9]{6}" maxLength={6} onChange={(e) => { setPinCode(e.target.value) }}/>
                 </div>
                 <div><button style={{color: "blue"}} onClick={() => { pinCodeRef.current.focus(); }}>Change</button></div> 
@@ -172,35 +172,35 @@ const ProductDetails = () => {
             </div>
             <div className='productDetails_reviews_body'>
               <div className='productDetails_reviews_ratings'>
-                <h3>{data?.rating}&nbsp;<i class="fa-solid fa-star"></i></h3>
+                <h3>{data?.rating}&nbsp;<i className="fa-solid fa-star"></i></h3>
                 <span>383 Ratings</span>
                 <span>&</span>
                 <span>21 Reviews</span>
               </div>
               <div style={{display: "flex", height: "100%"}}>
                 {/* <div className='productDetails_reviews_ratings_chart'>
-                  <span>5<i class="fa-solid fa-star"></i></span>
+                  <span>5<i className="fa-solid fa-star"></i></span>
                   <div className='productDetails_reviews_ratings_chart_part'></div>
                   <span>{ratings[0].number}</span>
                 </div>
                 <div className='productDetails_reviews_ratings_chart'>
-                  <span>4<i class="fa-solid fa-star"></i></span>
+                  <span>4<i className="fa-solid fa-star"></i></span>
                   <div className='productDetails_reviews_ratings_chart_part'>
                   </div>
                   <span>{ratings[1].number}</span>
                 </div>
                 <div className='productDetails_reviews_ratings_chart'>
-                  <span>3<i class="fa-solid fa-star"></i></span>
+                  <span>3<i className="fa-solid fa-star"></i></span>
                   <div className='productDetails_reviews_ratings_chart_part'></div>
                   <span>{ratings[2].number}</span>
                 </div>
                 <div className='productDetails_reviews_ratings_chart'>
-                  <span>2<i class="fa-solid fa-star"></i></span>
+                  <span>2<i className="fa-solid fa-star"></i></span>
                   <div className='productDetails_reviews_ratings_chart_part'></div>
                   <span>{ratings[3].number}</span>
                 </div>
                 <div className='productDetails_reviews_ratings_chart'>
-                  <span>1<i class="fa-solid fa-star"></i></span>
+                  <span>1<i className="fa-solid fa-star"></i></span>
                   <div className='productDetails_reviews_ratings_chart_part'></div>
                   <span>{ratings[4].number}</span>
                 </div> */}

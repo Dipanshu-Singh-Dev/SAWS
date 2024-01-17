@@ -495,7 +495,7 @@ const Navbar = () => {
         </NavLink>
         <NavLink onClick={() => { 
           if(isAuth) value.setAuthState({...value.authState, isAuth: false, cart: []})
-         }} title={isAuth ? "Log Out" : "Log In"} to="/signup">
+         }} title={isAuth ? "Log Out" : "Log In"} to="/auth">
           {isAuth ? loggedinSVG : loginSVG}
         </NavLink>
       </div>

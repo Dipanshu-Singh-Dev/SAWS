@@ -59,24 +59,26 @@ const Products = () => {
         <div className="products_data">
           {data?.map(
             (
-              {
+              el,
+              i
+            ) => {
+              const {
                 url,
                 image,
                 rating,
                 name: title,
                 MRP: price,
                 price: discountPrice,
-              },
-              i
-            ) => {
+              } = el;
               return (
                 <ProductContainer
-                  key={url}
+                  key={el._id}
                   url={url}
                   img={image}
                   rating={rating}
                   title={title}
                   price={price}
+                  id={el._id}
                   discountPrice={discountPrice}
                 />
               );

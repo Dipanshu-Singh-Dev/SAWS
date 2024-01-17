@@ -10,7 +10,7 @@ const PrivateRoute = ({children}) => {
     let {isAuth} = value.authState;
   
     useEffect(() => {
-        if(!isAuth) return navigate("/signup");
+        if(!isAuth) return navigate("/auth");
     }, [])
   
     return children

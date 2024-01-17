@@ -5,10 +5,10 @@ import { useNavigate } from 'react-router';
 
 
 
-const ProductContainer = ({url,elRef,img,rating, title,price,discountPrice }) => {
+const ProductContainer = ({url,elRef,img,rating, title,price,discountPrice,id}) => {
   const navigate = useNavigate()
-  const handleClick=(event)=>{
-      if(url)navigate(url)
+  const handleClick=()=>{
+      navigate(id)
   }
   return (
     <div onClick={handleClick} ref={elRef} className={styles.container}>
