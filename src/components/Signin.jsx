@@ -11,8 +11,8 @@ const Signin = () => {
           window.alert("You've successfully logged in")
         }
     }).catch((err)=>{
-          window.alert("Failed to login");
-      console.log(err)
+        window.alert("Failed to login");
+        console.log(err)
     })
   };
   return (
